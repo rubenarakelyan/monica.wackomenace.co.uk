@@ -1,0 +1,26 @@
+name: monica
+
+services:
+  app:
+    image: monica:fpm
+    env_file: .env.web
+    ports:
+      - "9000:9000"
+    depends_on:
+      - db
+    volumes:
+      - data:/var/www/html/storage
+    restart: always
+
+  db:
+    image: mariadb:11
+    env_file: .env.db
+    volumes:
+      - mysql:/var/lib/mysql
+    restart: always
+
+volumes:
+  data:
+    name: data
+  mysql:
+    name: mysql
