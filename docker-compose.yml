@@ -10,6 +10,7 @@ services:
       - db
     volumes:
       - data:/var/www/html/storage
+      - static:/var/www/html/public
     restart: always
 
   db:
@@ -22,5 +23,7 @@ services:
 volumes:
   data:
     name: data
+  static:
+    name: static
   mysql:
     name: mysql
